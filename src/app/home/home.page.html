@@ -1,20 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- BOTENES INICIALES -->
+<ion-content [fullscreen]="true" >
+  <div class="container" *ngIf="menu === 0">
+    <ion-button (click)="logout()">Salir</ion-button>
+      <ion-card>
+        <ion-buttons>
+          <ion-button (click)="chooseMenu(1)" >cosas lindas</ion-button>
+          <br>
+          <ion-button (click)="chooseMenu(2)">cosas feas</ion-button>
+        </ion-buttons>
+      </ion-card>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    
+<!-- TOOLBAR -->
+  <div *ngIf="menu === 1 || menu === 2">
+    <ion-header>
+      <ion-toolbar color="medium">
+        <ion-buttons slot="start">
+          <ion-back-button default-href="#" (click)="chooseMenu(0)"></ion-back-button>
+        </ion-buttons>
+        <ion-title *ngIf="menu === 1">Cosas lindas</ion-title>
+        <ion-title *ngIf="menu === 2">Cosas feas</ion-title>
+        <ion-buttons slot="end">
+          <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+          <ion-icon slot="icon-only" name="image-outline"></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+
+  <!-- FOTOS -->
+  <div *ngIf="menu !== 0">
+    <ion-card>
+      <ion-card-content>
+        <ion-list *ngIf="this.cosasLindasList !== []; else elseBlock">
+          <ion-item lines="none" *ngFor="let item of this.cosasLindasList; let i = index" data-index="i">
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="{{item.pathFoto}}" />
+            </ion-thumbnail>
+            <ion-label>{{item.hour}}</ion-label>
+            <ion-buttons slot="end">
+              <ion-icon color="success" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+              <ion-icon color="danger" slot="icon-only" name="close-circle-outline"></ion-icon>
+            </ion-buttons>
+          </ion-item>
+        </ion-list>
+        <ng-template #elseBlock>
+          <ion-title>
+            No hay Imagenes Lindas
+          </ion-title>
+        </ng-template>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

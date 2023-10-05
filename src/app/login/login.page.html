@@ -1,0 +1,33 @@
+<ion-content>
+  <section class="page-background">
+    <h1>Inicia sesion para continuar</h1>
+        
+    <form class="login-form" (submit)="login()">
+      <ion-label>
+        <span style="display: block; margin-bottom: 10px;">Correo electrónico</span>
+        <ion-input 
+          type="mail"
+          placeholder="ejem@ejem.com"
+          class="email-input" 
+          [formControl]="email"
+        />
+      </ion-label>
+      <ion-label>
+        <span style="display: block; margin-bottom: 10px;">Contraseña</span>
+        <ion-input 
+          type="password" 
+          placeholder="123456"
+          class="password-input" 
+          [formControl]="password"
+        />
+      </ion-label>
+      <ion-button class="submit-button" type="submit" >Ingresar</ion-button>
+     
+      <div class="fast-access-buttons">
+        <ion-button (click)="hardcode(0)" class="button">Usuario 1</ion-button>
+        <ion-button (click)="hardcode(1)" class="button">Usuario 2</ion-button>
+        <ion-button (click)="hardcode(2)" class="button">Usuario 3</ion-button>
+      </div>
+    </form>
+  </section>
+</ion-content>

@@ -1,0 +1,50 @@
+.container {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        -webkit-animation:rotate-center 1s ease-in-out both;
+        animation:rotate-center 1s ease-in-out both;
+        height: 100px;
+    }
+}
+
+.page-background{
+    height: 100vh;
+    background: #414141;
+}
+
+.lbl {
+    font-size: 32px;
+    text-align: center;
+}
+
+.division {
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+}
+
+@keyframes rotate-center { 
+    0% {
+        transform: rotate(0);
+        -webkit-transform: rotate(0); 
+    } 
+    100% {
+        transform:rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        transform:rotate(0);
+        -webkit-transform:rotate(0);
+    }
+    100% {
+        transform:rotate(360deg);
+        -webkit-transform:rotate(360deg);
+    }
+}
