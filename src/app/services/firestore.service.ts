@@ -69,4 +69,6 @@ export class FirestoreService {
   getCosasFeas() {
     return this.cosasFeas;
   } // end of getCosasFeas
+
+  
 }

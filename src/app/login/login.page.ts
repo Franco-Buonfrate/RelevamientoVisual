@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from 'firebase/auth';
+import { AuthLoginService } from '../services/auth-login.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginPage {
     {email:"usuario@usuario.com" , password:"333333"}
   ]
 
-  constructor(private userService:UserService) 
+  constructor(private authServise:AuthLoginService) 
   {
 
   }
@@ -30,7 +31,7 @@ export class LoginPage {
     const passL = this.password.value?.toString()
     this.showSpinner=true;
     setTimeout(() => {
-      this.userService.login(correoL,passL);
+      this.authServise.signIn(correoL,passL);
     }, 2000);
   }
 

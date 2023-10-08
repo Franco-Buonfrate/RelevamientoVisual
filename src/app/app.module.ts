@@ -14,7 +14,9 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 
-
+import { Chart } from 'chart.js';
+import { registerables } from 'chart.js';
+Chart.register(...registerables);
 
 @NgModule({
   declarations: [AppComponent],

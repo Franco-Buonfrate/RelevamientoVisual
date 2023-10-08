@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import  firebase  from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
     public router: Router
   ) {
     this.initializeApp();
+    defineCustomElements(window);
   }
 
   ngOnInit()

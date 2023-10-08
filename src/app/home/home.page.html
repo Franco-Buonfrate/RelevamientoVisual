@@ -5,7 +5,7 @@
     <ion-button (click)="logout()">Salir</ion-button>
       <ion-card>
         <ion-buttons>
-          <ion-button (click)="chooseMenu(1)" >cosas lindas</ion-button>
+          <ion-button  (click)="chooseMenu(1)" >cosas lindas</ion-button>
           <br>
           <ion-button (click)="chooseMenu(2)">cosas feas</ion-button>
         </ion-buttons>
@@ -22,36 +22,82 @@
         </ion-buttons>
         <ion-title *ngIf="menu === 1">Cosas lindas</ion-title>
         <ion-title *ngIf="menu === 2">Cosas feas</ion-title>
-        <ion-buttons slot="end">
-          <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
-          <ion-icon slot="icon-only" name="image-outline"></ion-icon>
+        <ion-buttons color="medium" slot="end">
+          <ion-button *ngIf="menu === 1"  (click)="chooseMenu(3)" >
+            <ion-icon slot="icon-only" name="bar-chart-outline"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="menu === 2"  (click)="chooseMenu(4)">
+            <ion-icon slot="icon-only" name="bar-chart-outline"></ion-icon>
+          </ion-button>
+          <ion-button (click)="tomarFotos(menu)">
+            <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+          </ion-button>
+
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
   </div>
 
   <!-- FOTOS -->
-  <div *ngIf="menu !== 0">
+  <div *ngIf="menu === 1 || menu === 2">
     <ion-card>
       <ion-card-content>
-        <ion-list *ngIf="this.cosasLindasList !== []; else elseBlock">
-          <ion-item lines="none" *ngFor="let item of this.cosasLindasList; let i = index" data-index="i">
+
+<!-- COSAS LINDAS -->
+        <ion-list *ngIf="menu === 1">
+          <ion-item lines="none" *ngFor="let photo of this.photosLindas; let i = index" data-index="i">
             <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="{{item.pathFoto}}" />
+              <img alt="Silhouette of mountains" [src]="photo.imagen" />
             </ion-thumbnail>
-            <ion-label>{{item.hour}}</ion-label>
+            <ion-label>{{photo.currentUser}}</ion-label>
             <ion-buttons slot="end">
-              <ion-icon color="success" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-              <ion-icon color="danger" slot="icon-only" name="close-circle-outline"></ion-icon>
+              <ion-icon *ngIf="!(photo.liked)" (click)="votar(photo)" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+              <ion-icon *ngIf="(photo.liked)" (click)="quitarVoto(photo)"  color="success" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
             </ion-buttons>
           </ion-item>
         </ion-list>
-        <ng-template #elseBlock>
-          <ion-title>
-            No hay Imagenes Lindas
-          </ion-title>
-        </ng-template>
+
+<!-- COSAS FEAS -->
+        <ion-list *ngIf="menu === 2">
+          <ion-item lines="none" *ngFor="let photo of this.photosFeas; let i = index" data-index="i">
+            <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" [src]="photo.imagen" />
+            </ion-thumbnail>
+            <ion-label>{{photo.currentUser}}</ion-label>
+            <ion-buttons slot="end">
+              <ion-icon *ngIf="!(photo.liked)" (click)="votar(photo)" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+              <ion-icon *ngIf="(photo.liked)" (click)="quitarVoto(photo)"  color="success" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+            </ion-buttons>
+          </ion-item>
+        </ion-list>
+
       </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- GRAFICO COSAS LINDAS-->
+  <div *ngIf="menu === 3">
+    <ion-toolbar color="medium">
+      <ion-buttons slot="start">
+        <ion-back-button default-href="#" (click)="chooseMenu(1)"></ion-back-button>
+      </ion-buttons>
+      <ion-title >Grafico cosas lindas</ion-title>
+    </ion-toolbar>
+
+    <canvas id="cosasLindas"></canvas>
+
+  </div>
+
+  <!-- GRAFICO COSAS FEAS-->
+  <div *ngIf="menu === 4">
+    <ion-toolbar color="medium">
+      <ion-buttons slot="start">
+        <ion-back-button default-href="#" (click)="chooseMenu(2)"></ion-back-button>
+      </ion-buttons>
+      <ion-title >Grafico cosas feas</ion-title>
+    </ion-toolbar>
+    <ion-card>
+      <canvas id = "cosasFeas"></canvas>
     </ion-card>
   </div>
 </ion-content>
