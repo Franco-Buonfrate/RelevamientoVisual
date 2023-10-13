@@ -5,8 +5,7 @@
     align-items: center;
 
     img{
-        -webkit-animation:rotate-center 1s ease-in-out both;
-        animation:rotate-center 1s ease-in-out both;
+        
         height: 100px;
     }
 }
@@ -27,24 +26,16 @@
     text-align: center;
 }
 
-@keyframes rotate-center { 
-    0% {
-        transform: rotate(0);
-        -webkit-transform: rotate(0); 
-    } 
-    100% {
-        transform:rotate(360deg);
-        -webkit-transform: rotate(360deg);
-    }
-}
+.rotate-scale-up{-webkit-animation:rotate-scale-up .65s linear 2 both;animation:rotate-scale-up .65s linear 2 both}
 
-@-webkit-keyframes rotate-center {
-    0% {
-        transform:rotate(0);
-        -webkit-transform:rotate(0);
-    }
-    100% {
-        transform:rotate(360deg);
-        -webkit-transform:rotate(360deg);
-    }
-}
+ @-webkit-keyframes rotate-scale-up{0%{-webkit-transform:scale(1) rotateZ(0);transform:scale(1) rotateZ(0)}50%{-webkit-transform:scale(2) rotateZ(180deg);transform:scale(2) rotateZ(180deg)}100%{-webkit-transform:scale(1) rotateZ(360deg);transform:scale(1) rotateZ(360deg)}}@keyframes rotate-scale-up{0%{-webkit-transform:scale(1) rotateZ(0);transform:scale(1) rotateZ(0)}50%{-webkit-transform:scale(2) rotateZ(180deg);transform:scale(2) rotateZ(180deg)}100%{-webkit-transform:scale(1) rotateZ(360deg);transform:scale(1) rotateZ(360deg)}}
+
+
+ .scale-in-center{-webkit-animation:scale-in-center .65s cubic-bezier(.25,.46,.45,.94) both;animation:scale-in-center .65s cubic-bezier(.25,.46,.45,.94) both}
+
+ @-webkit-keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes scale-in-center{0%{-webkit-transform:scale(0);transform:scale(0);opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}
+
+
+
+
+
