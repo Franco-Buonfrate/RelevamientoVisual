@@ -30,9 +30,9 @@ export class LoginPage {
     const correoL = this.email.value?.toString()
     const passL = this.password.value?.toString()
     this.showSpinner=true;
-    setTimeout(() => {
-      this.authServise.signIn(correoL,passL);
-    }, 2000);
+
+    this.authServise.signIn(correoL,passL);
+
   }
 
   hardcode(i:number)

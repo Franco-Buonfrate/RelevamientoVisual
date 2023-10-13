@@ -17,7 +17,7 @@ export class SplashPage implements OnInit {
       SplashScreen.hide().then(() => {
         setTimeout(() => {
           this.router.navigateByUrl('login');
-        }, 1000);
+        }, 2000);
 
       });
     });

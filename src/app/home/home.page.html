@@ -2,14 +2,26 @@
 <!-- BOTENES INICIALES -->
 <ion-content [fullscreen]="true" >
   <div class="container" *ngIf="menu === 0">
-    <ion-button (click)="logout()">Salir</ion-button>
-      <ion-card>
-        <ion-buttons>
-          <ion-button  (click)="chooseMenu(1)" >cosas lindas</ion-button>
-          <br>
-          <ion-button (click)="chooseMenu(2)">cosas feas</ion-button>
+
+     <ion-header>
+       <ion-toolbar color="medium">
+        <ion-buttons slot="start">
+          <ion-icon slot="icon-only" src="../../assets/log-out-svgrepo-com.svg" (click)="logout()"></ion-icon>
         </ion-buttons>
-      </ion-card>
+        <ion-title>Seleccione una opción</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class=" cosasLindasFeas-buttons">
+      <button (click)="chooseMenu(1)" >
+        <p class="button-text">COSAS LINDAS</p>
+        <img src="../../assets/casaLinda.jpg">
+      </button>
+      <button  (click)="chooseMenu(2)">
+        <p class="button-text">COSAS FEAS</p>
+        <img src="../../assets/casaFea.jpg">
+      </button>
+    </div>
     </div>
 
     

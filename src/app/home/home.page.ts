@@ -9,7 +9,6 @@ import { Subject } from 'rxjs';
 import { Chart, ChartEvent } from 'chart.js';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -175,13 +174,13 @@ export class HomePage implements OnInit {
         this.menu = 1;
         this.menuTittle = 'COSAS LINDAS';
         this.pressedButton = false;
-      }, 2000);
+      }, 1000);
     } else if (view === 2) {
       setTimeout(() => {
         this.menu = 2;
         this.menuTittle = 'COSAS FEAS';
         this.pressedButton = false;
-      }, 2000);
+      }, 1000);
     } else if (view === 3) {
       setTimeout(() => {
         this.menu = 3;
@@ -196,16 +195,16 @@ export class HomePage implements OnInit {
         this.pressedButton = false;
         setTimeout(() => {
           this.generarGraficoFeo();
-        }, 1000);
+        }, 1);
       }, 2000);
     }
     else {
-      setTimeout(() => {
+
         this.menu = 0;
         this.userImagesCosasLindas = false;
         this.userImagesCosasFeas = false;
         this.pressedButton = false;
-      }, 2000);
+
     }
   }
 
@@ -237,8 +236,6 @@ export class HomePage implements OnInit {
     return rtn;
   }
 
-
-
   generateRandomColors() {
     this.colors = [];
     for (let i = 0; i < this.data.length; i++) {
@@ -247,9 +244,8 @@ export class HomePage implements OnInit {
       const b = Math.floor(Math.random() * 255);
       this.colors.push(`rgb(${r}, ${g}, ${b})`);
     }
-
-
   }
+
   mostrarUnaFoto(ulr :string){
     Swal.fire({
       imageUrl: ulr,
@@ -267,6 +263,7 @@ export class HomePage implements OnInit {
       `
     });
   }
+
   tomarFotos(menu:number) {
     if(menu === 1)
     {
@@ -291,11 +288,12 @@ export class HomePage implements OnInit {
           this.reload();
         });
     }
-    
   }
+
   reload() {
     this.ngOnInit();
   }
+  
   votar(photo: any) {
     this.authService.uploadLikes(photo.photoRef).then(
       respuesta => {

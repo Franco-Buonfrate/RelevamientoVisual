@@ -71,7 +71,7 @@ export class AuthLoginService {
   async signOut() {
     try {
       const loading = await this.LoadingController.create({
-        message: 'Cerrando...',
+        message: 'Cerrando',
         showBackdrop: true,
         spinner: "dots"
       });
