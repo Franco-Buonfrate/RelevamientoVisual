@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'ionic.relevamientoVisual.app1',
-  appName: 'RelevamientoVisual',
+  appId: 'com.buonfrate.relevamientoVisual',
+  appName: 'Relevamiento Visual',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {
